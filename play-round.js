@@ -1,3 +1,5 @@
+let result = "";
+
 function getComputerChoice() {
   const choices = ["Rock", "Paper", "Scissors"];
 
@@ -16,19 +18,30 @@ function playRound(playerSelection, computerSelection) {
   console.log("Player lowercase:" + playerSelectionLowercase);
   console.log("Computer lowercase:" + computerSelectionLowercase);
   if (playerSelectionLowercase == computerSelectionLowercase) {
-    return "It's a tie!";
+    result = "Tie";
+    return result;
   } else if (
       (playerSelectionLowercase == "rock" && computerSelectionLowercase == "paper") ||
       (playerSelectionLowercase == "paper" && computerSelectionLowercase == "scissors") ||
       (playerSelectionLowercase == "scissors" && computerSelectionLowercase == "rock")
   ) {
-      return "You lost!";
+      result = "Lost";
+      return result;
   } else {
-      return "You won!";
+      result = "Won";
+      return result;
   }
     
 }
 
+function game() {
+    for (i = 0; i < 5; i++) {
+      playRound(playerSelection, computerSelection)
+      if (result == "Tie") {
+        
+      }
+    }
+}
 
 const playerSelection = "paper";
 console.log("Player:" + playerSelection);
