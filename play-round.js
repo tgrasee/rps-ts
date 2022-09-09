@@ -14,9 +14,12 @@ function playRound(playerSelection, computerSelection) {
   let playerSelectionLowercase = playerSelection.toLowerCase();
   let computerSelectionLowercase = computerSelection.toLowerCase();
 
-  if (playerSelectionLowercase === "rock" && computerSelectionLowercase === "scissors") {
-    return ""
-  }
+  if (playerSelectionLowercase == computerSelectionLowercase) {
+    return "It's a tie!"
+  } else if 
+    (playerSelectionLowercase == "rock" && computerSelectionLowercase == "paper");
+    (playerSelectionLowercase == "paper" && computerSelectionLowercase == "scissors");
+    (playerSelectionLowercase == "scissors" && computerSelectionLowercase == "rock");
 
 }
 
