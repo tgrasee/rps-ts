@@ -6,6 +6,8 @@ function getComputerChoice() {
 
     let choice = choices[selector];
     console.log(choice);
+
+    return choice;
 }
 
-getComputerChoice()
+console.log(getComputerChoice());
