@@ -10,4 +10,12 @@ function getComputerChoice() {
     return choice;
 }
 
+function playRound(playerSelection, computerSelection) {
+
+}
+
 console.log(getComputerChoice());
+
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
