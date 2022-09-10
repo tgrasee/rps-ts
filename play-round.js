@@ -1,4 +1,5 @@
 let result = "";
+const playerSelection = "";
 
 function getComputerChoice() {
   const choices = ["Rock", "Paper", "Scissors"];
@@ -13,6 +14,8 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+  playerSelection = prompt("Rock, Paper, or Scissors?");
+  console.log(playerSelection);
   let playerSelectionLowercase = playerSelection.toLowerCase();
   let computerSelectionLowercase = computerSelection.toLowerCase();
   console.log("Player lowercase:" + playerSelectionLowercase);
@@ -28,23 +31,37 @@ function playRound(playerSelection, computerSelection) {
       result = "Lost";
       return result;
   } else {
-      result = "Won";
+      result = "Win";
       return result;
   }
     
 }
 
 function game() {
-    for (i = 0; i < 5; i++) {
-      playRound(playerSelection, computerSelection)
-      if (result == "Tie") {
-        
-      }
+  let playerWin = 0;
+  let computerWin = 0;
+  for (i = 0; i < 5; i++) {
+    playRound(playerSelection, computerSelection)
+    if (result == "Tie") {
+      console.log("It's a tie!");
+    } else if (result == "Lost") {
+        console.log("Computer won");
+        computerWin += 1;
+    } else if (result == "Win") {
+        console.log("You won!");
+        playerWin +=1;
     }
+  }
+  if (computerWin > playerWin) {
+    console.log("You have lost the game");
+  } else {
+      console.log("You won the game!");
+  }
 }
 
-const playerSelection = "paper";
-console.log("Player:" + playerSelection);
+// const playerSelection = prompt("Rock, Paper, or Scissors?");
+// console.log("Player:" + playerSelection);
 const computerSelection = getComputerChoice();
-console.log("Computer:" + computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+// console.log("Computer:" + computerSelection);
+// console.log(playRound(playerSelection, computerSelection));
+game();
