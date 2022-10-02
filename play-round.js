@@ -1,68 +1,79 @@
-let result = "";
-let playerSelection = "";
-let computerSelection = "";
-
-const buttons = document.querySelectorAll('button');
-
-buttons.forEach((button) => {
-  button.addEventListener('click', () => {
-    console.log(button.id);
-    playerSelection = button.id;
-    game();
-  });
-});
-
-function getComputerChoice() {
-  const choices = ["Rock", "Paper", "Scissors"];
-  let selector = Math.floor(Math.random() * 3);
-  let choice = choices[selector];
-  return choice;
-}
-
-function playRound(playerSelection, computerSelection) {
-  // playerSelection = "rock";
-  computerSelection = getComputerChoice();
-  let playerSelectionLowercase = playerSelection.toLowerCase();
-  let computerSelectionLowercase = computerSelection.toLowerCase();
-  console.log("You chose: " + playerSelection);
-  console.log("Computer chose: " + computerSelection);
-  if (playerSelectionLowercase === computerSelectionLowercase) {
-    result = "Tie";
-    return result;
-  } else if (
-      (playerSelectionLowercase === "rock" && computerSelectionLowercase === "paper") ||
-      (playerSelectionLowercase === "paper" && computerSelectionLowercase === "scissors") ||
-      (playerSelectionLowercase === "scissors" && computerSelectionLowercase === "rock")
-  ) {
-      result = "Lost";
-      return result;
-  } else {
-      result = "Win";
-      return result;
-  } 
-}
-
 function game() {
-  
-  let playerWin = 0;
-  let computerWin = 0;
-  for (i = 0; i < 1; i++) {
-    playRound(playerSelection, computerSelection);
-    if (result === "Tie") {
-      console.log("It's a tie!");
-    } else if (result === "Lost") {
-        console.log("You lost!");
-        computerWin += 1;
-    } else if (result === "Win") {
-        console.log("You won!");
-        playerWin +=1;
+  let playerScore = 0;
+  let computerScore = 0;
+  let moves = 0;
+  const result = document.querySelector('.results');
+
+  function playRound() {
+    const playerOptions = Array.from(document.querySelectorAll('button'));
+    const computerChoices = ["Rock", "Paper", "Scissors"];
+
+    playerOptions.forEach((button) => {
+      button.addEventListener('click', () => {
+        moves++;
+
+        const selector = Math.floor(Math.random() * 3);
+        const computerChoice = computerChoices[selector];
+
+        winner(button.textContent, computerChoice)
+
+        if(moves == 2) {
+            gameOver();
+        }
+      });
+    });
+  }
+
+  function winner(player, computer) {
+    let playerSelectionLowercase = player.toLowerCase();
+    let computerSelectionLowercase = computer.toLowerCase();
+
+    if (playerSelectionLowercase === computerSelectionLowercase) {
+        const tie = document.createElement('p');
+        tie.classList.add('tie');
+        tie.textContent = "It's a tie!"
+        result.appendChild(tie);
+      } else if (
+          (playerSelectionLowercase === "rock" && computerSelectionLowercase === "paper") ||
+          (playerSelectionLowercase === "paper" && computerSelectionLowercase === "scissors") ||
+          (playerSelectionLowercase === "scissors" && computerSelectionLowercase === "rock")
+      ) {
+          const lost = document.createElement('p');
+          lost.classList.add('lost');
+          lost.textContent = "You lost!";
+          result.appendChild(lost);
+          computerScore++;
+      } else {
+          const won = document.createElement('p');
+          won.classList.add('won');
+          won.textContent = "You won!"
+          result.appendChild(won);
+          playerScore++;
+      }
+  }
+
+  function gameOver() {
+    if (computerScore == playerScore) {
+      const tieGame = document.createElement('p');
+      tieGame.classList.add('tieGame');
+      tieGame.textContent = "Tie game!";
+      result.appendChild(tieGame);
+    }
+    else if (computerScore > playerScore) {
+      const lostGame = document.createElement('p');
+      lostGame.classList.add('lostGame');
+      lostGame.textContent = "You lost the game!";
+      result.appendChild(lostGame);
+    }
+    else {
+        const wonGame = document.createElement('p');
+        wonGame.classList.add('wonGame');
+        wonGame.textContent = "You won the game!";
+        result.appendChild(wonGame);
     }
   }
-  if (computerWin > playerWin) {
-    console.log("You have lost the game");
-  } else {
-    console.log(`You won the game! You won ${playerWin} out of 5 rounds.`);
-  }
+
+  playRound();
 }
 
-// game();
+game();
