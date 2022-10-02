@@ -57,6 +57,8 @@ function game() {
   }
 
   function gameOver(playerOptions) {
+    const reload = document.querySelector('.reload');
+
     playerOptions.forEach(option => {
       option.style.display = 'none';
     })
@@ -78,6 +80,11 @@ function game() {
         wonGame.textContent = "You won the game!";
         result.appendChild(wonGame);
     }
+    reload.innerText = 'Restart';
+    reload.style.display = 'flex';
+    reload.addEventListener('click', () => {
+      window.location.reload();
+    })
   }
 
   playRound();
