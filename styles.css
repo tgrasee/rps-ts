@@ -16,3 +16,25 @@
     justify-content: center;
     align-items: center;
 }
+
+.title {
+    position: absolute;
+    top: 0;
+    font-size: 4rem;
+    z-index: 2;
+}
+
+.score {
+    display: flex;
+    width: 30vw;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 70px;
+    z-index: 1;
+}
+
+.playerCount, .computerCount {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
