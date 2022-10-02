@@ -18,7 +18,7 @@ function game() {
         winner(button.textContent, computerChoice)
 
         if(moves == 2) {
-            gameOver();
+            gameOver(playerOptions);
         }
       });
     });
@@ -27,6 +27,8 @@ function game() {
   function winner(player, computer) {
     let playerSelectionLowercase = player.toLowerCase();
     let computerSelectionLowercase = computer.toLowerCase();
+    const playerScoreBoard = document.querySelector('.playerCount');
+    const computerScoreBoard = document.querySelector('.computerCount');
 
     if (playerSelectionLowercase === computerSelectionLowercase) {
         const tie = document.createElement('p');
@@ -43,16 +45,21 @@ function game() {
           lost.textContent = "You lost!";
           result.appendChild(lost);
           computerScore++;
+          computerScoreBoard.textContent = computerScore;
       } else {
           const won = document.createElement('p');
           won.classList.add('won');
           won.textContent = "You won!"
           result.appendChild(won);
           playerScore++;
+          playerScoreBoard.textContent = playerScore;
       }
   }
 
-  function gameOver() {
+  function gameOver(playerOptions) {
+    playerOptions.forEach(option => {
+      option.style.display = 'none';
+    })
     if (computerScore == playerScore) {
       const tieGame = document.createElement('p');
       tieGame.classList.add('tieGame');
