@@ -41,7 +41,7 @@
 
 .buttons {
     display: flex;
-    padding: 5px;
+    padding-bottom: 15px;
     width: 50vw;
     justify-content: space-evenly;
     margin-top: 2rem;
