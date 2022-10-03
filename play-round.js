@@ -57,7 +57,10 @@ function game() {
   }
 
   function gameOver(playerOptions) {
-    const reload = document.querySelector('.reload');
+    const restart = document.createElement('button');
+    const restartBtn = document.createTextNode('Restart');
+    const btnContainer = document.querySelector('.buttons');
+    restart.appendChild(restartBtn);
 
     playerOptions.forEach(option => {
       option.style.display = 'none';
@@ -80,9 +83,9 @@ function game() {
         wonGame.textContent = "You won the game!";
         result.appendChild(wonGame);
     }
-    reload.innerText = 'Restart';
-    reload.style.display = 'flex';
-    reload.addEventListener('click', () => {
+    restart.className = 'restartBtn';
+    btnContainer.appendChild(restart);
+    restart.addEventListener('click', () => {
       window.location.reload();
     })
   }
