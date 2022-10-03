@@ -17,7 +17,7 @@ function game() {
 
         winner(button.textContent, computerChoice)
 
-        if(moves == 2) {
+        if(moves == 5) {
             gameOver(playerOptions);
         }
       });
