@@ -27,8 +27,8 @@ function game() {
   function winner(player:string, computer:string) {
     let playerSelectionLowercase = player.toLowerCase();
     let computerSelectionLowercase = computer.toLowerCase();
-    const playerScoreBoard = document.querySelector('.playerCount');
-    const computerScoreBoard = document.querySelector('.computerCount');
+    let playerScoreBoard = document.querySelector('.playerCount');
+    let computerScoreBoard = document.querySelector('.computerCount');
 
     if (playerSelectionLowercase === computerSelectionLowercase) {
       const tie = document.createElement('p');
@@ -46,7 +46,7 @@ function game() {
         lost.textContent = "You lost!";
         result?.appendChild(lost);
         computerScore++;
-        computerScoreBoard?.replaceWith(computerScore.toString());
+        computerScoreBoard.innerHTML = computerScore.toString();
     } 
     else {
         const won = document.createElement('p');
@@ -54,7 +54,7 @@ function game() {
         won.textContent = "You won!"
         result?.appendChild(won);
         playerScore++;
-        playerScoreBoard?.replaceWith(playerScore.toString());
+        playerScoreBoard.innerHTML = playerScore.toString();// playerScoreBoard?.replaceWith(playerScore.toString());
     }
   }
 
