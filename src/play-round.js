@@ -38,7 +38,7 @@ function game() {
             lost.textContent = "You lost!";
             result === null || result === void 0 ? void 0 : result.appendChild(lost);
             computerScore++;
-            computerScoreBoard === null || computerScoreBoard === void 0 ? void 0 : computerScoreBoard.replaceWith(computerScore.toString());
+            computerScoreBoard.innerHTML = computerScore.toString();
         }
         else {
             var won = document.createElement('p');
@@ -46,7 +46,7 @@ function game() {
             won.textContent = "You won!";
             result === null || result === void 0 ? void 0 : result.appendChild(won);
             playerScore++;
-            playerScoreBoard === null || playerScoreBoard === void 0 ? void 0 : playerScoreBoard.replaceWith(playerScore.toString());
+            playerScoreBoard.innerHTML = playerScore.toString(); // playerScoreBoard?.replaceWith(playerScore.toString());
         }
     }
     function gameOver() {
