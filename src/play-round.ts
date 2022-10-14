@@ -3,7 +3,7 @@ function game() {
   let computerScore = 0;
   let moves = 0;
   const result = document.querySelector('.results');
-  const playerOptions = document.querySelectorAll('button'); //Array.from()
+  const playerOptions = document.querySelectorAll('button');
 
   function playRound() {
     const computerChoices = ["Rock", "Paper", "Scissors"];
@@ -11,14 +11,13 @@ function game() {
     playerOptions.forEach((button) => {
       button.addEventListener('click', () => {
         moves++;
-        // const btnSelected:string = button.id;
         const selector = Math.floor(Math.random() * 3);
         const computerChoice = computerChoices[selector];
 
         winner(button.id, computerChoice)
 
         if(moves == 5) {
-            gameOver(); //playerOptions
+            gameOver();
         }
       });
     });
@@ -46,7 +45,7 @@ function game() {
         lost.textContent = "You lost!";
         result?.appendChild(lost);
         computerScore++;
-        computerScoreBoard.innerHTML = computerScore.toString();
+        computerScoreBoard.textContent = computerScore.toString();
     } 
     else {
         const won = document.createElement('p');
@@ -54,11 +53,11 @@ function game() {
         won.textContent = "You won!"
         result?.appendChild(won);
         playerScore++;
-        playerScoreBoard.innerHTML = playerScore.toString();// playerScoreBoard?.replaceWith(playerScore.toString());
+        playerScoreBoard.textContent = playerScore.toString();
     }
   }
 
-  function gameOver() { //playerOptions
+  function gameOver() {
     const restart = document.createElement('button');
     const restartBtn = document.createTextNode('Restart');
     const btnContainer = document.querySelector('.buttons');
@@ -67,9 +66,6 @@ function game() {
     while (btnContainer?.firstChild) {
       btnContainer.removeChild(btnContainer.firstChild);
     }
-    // playerOptions.forEach(option => {
-    //   option.style.display = 'none';
-    // })
     if (computerScore == playerScore) {
       const tieGame = document.createElement('p');
       tieGame.classList.add('tieGame');
