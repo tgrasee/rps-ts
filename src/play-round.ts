@@ -19,7 +19,7 @@ function game() {
         winner(button.id, computerChoice)
 
         if(moves == 5) {
-            gameOver();
+          gameOver();
         }
       });
     });
