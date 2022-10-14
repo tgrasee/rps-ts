@@ -1,3 +1,4 @@
+// Main function that plays the game
 function game() {
   let playerScore = 0;
   let computerScore = 0;
@@ -5,6 +6,7 @@ function game() {
   const result = document.querySelector('.results');
   const playerOptions = document.querySelectorAll('button');
 
+  // Plays 5 rounds
   function playRound() {
     const computerChoices = ["Rock", "Paper", "Scissors"];
 
@@ -23,6 +25,7 @@ function game() {
     });
   }
 
+  // Determines the winner of each round and updates scoreboard
   function winner(player:string, computer:string) {
     let playerSelectionLowercase = player.toLowerCase();
     let computerSelectionLowercase = computer.toLowerCase();
@@ -36,27 +39,29 @@ function game() {
       result?.appendChild(tie);
     } 
     else if (
-        (playerSelectionLowercase === "rock" && computerSelectionLowercase === "paper") ||
-        (playerSelectionLowercase === "paper" && computerSelectionLowercase === "scissors") ||
-        (playerSelectionLowercase === "scissors" && computerSelectionLowercase === "rock")
+      (playerSelectionLowercase === "rock" && computerSelectionLowercase === "paper") ||
+      (playerSelectionLowercase === "paper" && computerSelectionLowercase === "scissors") ||
+      (playerSelectionLowercase === "scissors" && computerSelectionLowercase === "rock")
     ) {
-        const lost = document.createElement('p');
-        lost.classList.add('lost');
-        lost.textContent = "You lost!";
-        result?.appendChild(lost);
-        computerScore++;
-        computerScoreBoard.textContent = computerScore.toString();
+      const lost = document.createElement('p');
+      lost.classList.add('lost');
+      lost.textContent = "You lost!";
+      result?.appendChild(lost);
+      computerScore++;
+      computerScoreBoard.textContent = computerScore.toString();
     } 
     else {
-        const won = document.createElement('p');
-        won.classList.add('won');
-        won.textContent = "You won!"
-        result?.appendChild(won);
-        playerScore++;
-        playerScoreBoard.textContent = playerScore.toString();
+      const won = document.createElement('p');
+      won.classList.add('won');
+      won.textContent = "You won!"
+      result?.appendChild(won);
+      playerScore++;
+      playerScoreBoard.textContent = playerScore.toString();
     }
   }
 
+  // Ends the game and decalares a winner
+  // Removes buttons and creates a restart button to play again
   function gameOver() {
     const restart = document.createElement('button');
     const restartBtn = document.createTextNode('Restart');
@@ -79,10 +84,10 @@ function game() {
       result?.appendChild(lostGame);
     }
     else {
-        const wonGame = document.createElement('p');
-        wonGame.classList.add('wonGame');
-        wonGame.textContent = "You won the game!";
-        result?.appendChild(wonGame);
+      const wonGame = document.createElement('p');
+      wonGame.classList.add('wonGame');
+      wonGame.textContent = "You won the game!";
+      result?.appendChild(wonGame);
     }
     restart.className = 'restartBtn';
     btnContainer?.appendChild(restart);
